@@ -1,0 +1,182 @@
+/* ==========================================================================
+   UWorld Design System — CSS Reset & Base Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Modern CSS Reset (based on Josh Comeau's reset)
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin:  0;
+  padding: 0;
+}
+
+html {
+  font-size:               16px;
+  -webkit-text-size-adjust: 100%;
+  tab-size:                4;
+  scroll-behavior:         smooth;
+}
+
+body {
+  min-height:           100vh;
+  font-family:          var(--font-family-base);
+  font-size:            var(--font-size-md);
+  font-weight:          var(--font-weight-regular);
+  line-height:          var(--line-height-normal);
+  color:                var(--color-text-primary);
+  background-color:     var(--color-bg-default);
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering:       optimizeLegibility;
+}
+
+/* --------------------------------------------------------------------------
+   Typography reset
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-size:   inherit;
+  font-weight: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Media
+   -------------------------------------------------------------------------- */
+img,
+picture,
+video,
+canvas,
+svg {
+  display:    block;
+  max-width:  100%;
+}
+
+/* --------------------------------------------------------------------------
+   Form elements
+   -------------------------------------------------------------------------- */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor:           pointer;
+  background:       none;
+  border:           none;
+  text-decoration:  none;
+}
+
+a {
+  color:           var(--color-text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+fieldset {
+  border: none;
+}
+
+/* --------------------------------------------------------------------------
+   List reset
+   -------------------------------------------------------------------------- */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   Focus styles
+   -------------------------------------------------------------------------- */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline:        2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius:  var(--radius-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Selection
+   -------------------------------------------------------------------------- */
+::selection {
+  background-color: var(--color-primary-200);
+  color:            var(--color-primary-900);
+}
+
+/* --------------------------------------------------------------------------
+   Scrollbar (WebKit)
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width:  8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background:    var(--color-neutral-300);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-400);
+}
+
+/* --------------------------------------------------------------------------
+   Utility: visually hidden (accessible)
+   -------------------------------------------------------------------------- */
+.sr-only {
+  position:   absolute;
+  width:      1px;
+  height:     1px;
+  padding:    0;
+  margin:     -1px;
+  overflow:   hidden;
+  clip:       rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border:     0;
+}
+
+/* --------------------------------------------------------------------------
+   Utility: truncate text
+   -------------------------------------------------------------------------- */
+.truncate {
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  white-space:   nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Utility: flex helpers
+   -------------------------------------------------------------------------- */
+.flex         { display: flex; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+/* --------------------------------------------------------------------------
+   Utility: spacing helpers
+   -------------------------------------------------------------------------- */
+.mt-auto { margin-top: auto; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+.mb-auto { margin-bottom: auto; }
