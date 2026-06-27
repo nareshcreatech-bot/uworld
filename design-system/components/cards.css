@@ -1,0 +1,187 @@
+/* ==========================================================================
+   UWorld Design System — Card Components
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base card
+   -------------------------------------------------------------------------- */
+.card {
+  position:         relative;
+  background-color: var(--color-bg-default);
+  border:           1px solid var(--color-border-default);
+  border-radius:    var(--radius-card);
+  box-shadow:       var(--shadow-card);
+  overflow:         hidden;
+}
+
+.card__header {
+  padding:          var(--space-4) var(--space-6);
+  border-bottom:    1px solid var(--color-border-default);
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  gap:              var(--space-4);
+}
+
+.card__body {
+  padding: var(--space-6);
+}
+
+.card__footer {
+  padding:          var(--space-4) var(--space-6);
+  border-top:       1px solid var(--color-border-default);
+  background-color: var(--color-bg-subtle);
+  display:          flex;
+  align-items:      center;
+  justify-content:  flex-end;
+  gap:              var(--space-3);
+}
+
+/* Card title */
+.card__title {
+  font-size:    var(--font-size-lg);
+  font-weight:  var(--font-weight-semibold);
+  color:        var(--color-text-primary);
+  line-height:  var(--line-height-tight);
+  margin:       0;
+}
+
+.card__subtitle {
+  font-size:    var(--font-size-sm);
+  color:        var(--color-text-secondary);
+  margin-top:   var(--space-1);
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Card sizes
+   -------------------------------------------------------------------------- */
+.card--sm .card__body { padding: var(--space-4); }
+.card--lg .card__body { padding: var(--space-8); }
+
+/* --------------------------------------------------------------------------
+   Card variants
+   -------------------------------------------------------------------------- */
+
+/* Flat — no shadow */
+.card--flat {
+  box-shadow: none;
+}
+
+/* Elevated */
+.card--elevated {
+  box-shadow: var(--shadow-md);
+}
+
+/* Hoverable */
+.card--hoverable {
+  cursor:     pointer;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.card--hoverable:hover {
+  box-shadow: var(--shadow-lg);
+  transform:  translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   UWorld: Question card
+   -------------------------------------------------------------------------- */
+.card--question {
+  border-left:  4px solid var(--color-primary-500);
+}
+
+.card--question .card__body {
+  padding: var(--space-6) var(--space-8);
+}
+
+.card__question-meta {
+  display:      flex;
+  align-items:  center;
+  gap:          var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size:    var(--font-size-xs);
+  color:        var(--color-text-secondary);
+  font-weight:  var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-caps);
+}
+
+.card__question-text {
+  font-size:    var(--text-question-size);
+  font-weight:  var(--text-question-weight);
+  line-height:  var(--text-question-lh);
+  color:        var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+
+.card__answers {
+  display:       flex;
+  flex-direction: column;
+  gap:           var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   UWorld: Explanation card
+   -------------------------------------------------------------------------- */
+.card--explanation {
+  border-left:      4px solid var(--color-success-500);
+  background-color: var(--color-success-50);
+}
+
+.card--explanation.is-incorrect {
+  border-left-color: var(--color-danger-500);
+  background-color:  var(--color-danger-50);
+}
+
+.card__explanation-label {
+  font-size:      var(--font-size-xs);
+  font-weight:    var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-caps);
+  color:          var(--color-success-700);
+  margin-bottom:  var(--space-2);
+}
+
+.card--explanation.is-incorrect .card__explanation-label {
+  color: var(--color-danger-700);
+}
+
+.card__explanation-text {
+  font-size:   var(--text-explanation-size);
+  line-height: var(--text-explanation-lh);
+  color:       var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   UWorld: Stats card
+   -------------------------------------------------------------------------- */
+.card--stat {
+  text-align:  center;
+  padding:     var(--space-6);
+  cursor:      default;
+}
+
+.card__stat-value {
+  font-size:    var(--font-size-4xl);
+  font-weight:  var(--font-weight-bold);
+  color:        var(--color-primary-600);
+  line-height:  1;
+  margin-bottom: var(--space-2);
+}
+
+.card__stat-label {
+  font-size:    var(--font-size-sm);
+  color:        var(--color-text-secondary);
+  font-weight:  var(--font-weight-medium);
+}
+
+.card__stat-delta {
+  display:      inline-flex;
+  align-items:  center;
+  gap:          var(--space-1);
+  font-size:    var(--font-size-xs);
+  margin-top:   var(--space-2);
+}
+
+.card__stat-delta--up   { color: var(--color-success-600); }
+.card__stat-delta--down { color: var(--color-danger-600);  }
