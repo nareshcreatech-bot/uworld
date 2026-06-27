@@ -1,0 +1,220 @@
+/* ==========================================================================
+   UWorld Design System — Button Components
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base button reset & shared styles
+   -------------------------------------------------------------------------- */
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-2);
+  border:          2px solid transparent;
+  border-radius:   var(--radius-button);
+  font-family:     var(--font-family-base);
+  font-weight:     var(--font-weight-semibold);
+  line-height:     1;
+  text-decoration: none;
+  cursor:          pointer;
+  user-select:     none;
+  transition:      background-color 150ms ease, border-color 150ms ease,
+                   color 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+  white-space:     nowrap;
+}
+
+.btn:focus-visible {
+  outline:        2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity:        0.5;
+  cursor:         not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Sizes
+   -------------------------------------------------------------------------- */
+.btn--xs {
+  padding:   var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  height:    1.75rem;  /* 28px */
+}
+
+.btn--sm {
+  padding:   var(--space-1-5) var(--space-3);
+  font-size: var(--font-size-sm);
+  height:    2rem;     /* 32px */
+}
+
+.btn--md {
+  padding:   var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  height:    2.5rem;   /* 40px */
+}
+
+.btn--lg {
+  padding:   var(--space-2-5) var(--space-6);
+  font-size: var(--font-size-md);
+  height:    3rem;     /* 48px */
+}
+
+.btn--xl {
+  padding:   var(--space-3) var(--space-8);
+  font-size: var(--font-size-lg);
+  height:    3.5rem;   /* 56px */
+}
+
+/* --------------------------------------------------------------------------
+   Variants
+   -------------------------------------------------------------------------- */
+
+/* Primary */
+.btn--primary {
+  background-color: var(--color-primary-600);
+  border-color:     var(--color-primary-600);
+  color:            var(--color-neutral-0);
+}
+.btn--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-700);
+  border-color:     var(--color-primary-700);
+}
+.btn--primary:active:not(:disabled) {
+  background-color: var(--color-primary-800);
+  border-color:     var(--color-primary-800);
+}
+
+/* Secondary */
+.btn--secondary {
+  background-color: var(--color-neutral-0);
+  border-color:     var(--color-border-default);
+  color:            var(--color-text-primary);
+}
+.btn--secondary:hover:not(:disabled) {
+  background-color: var(--color-bg-subtle);
+  border-color:     var(--color-border-strong);
+}
+.btn--secondary:active:not(:disabled) {
+  background-color: var(--color-bg-muted);
+}
+
+/* Ghost */
+.btn--ghost {
+  background-color: transparent;
+  border-color:     transparent;
+  color:            var(--color-primary-600);
+}
+.btn--ghost:hover:not(:disabled) {
+  background-color: var(--color-primary-50);
+}
+.btn--ghost:active:not(:disabled) {
+  background-color: var(--color-primary-100);
+}
+
+/* Danger */
+.btn--danger {
+  background-color: var(--color-danger-500);
+  border-color:     var(--color-danger-500);
+  color:            var(--color-neutral-0);
+}
+.btn--danger:hover:not(:disabled) {
+  background-color: var(--color-danger-600);
+  border-color:     var(--color-danger-600);
+}
+.btn--danger:active:not(:disabled) {
+  background-color: var(--color-danger-700);
+  border-color:     var(--color-danger-700);
+}
+
+/* Success */
+.btn--success {
+  background-color: var(--color-success-600);
+  border-color:     var(--color-success-600);
+  color:            var(--color-neutral-0);
+}
+.btn--success:hover:not(:disabled) {
+  background-color: var(--color-success-700);
+  border-color:     var(--color-success-700);
+}
+
+/* --------------------------------------------------------------------------
+   Modifiers
+   -------------------------------------------------------------------------- */
+
+/* Full width */
+.btn--full { width: 100%; }
+
+/* Icon only */
+.btn--icon {
+  padding:       0;
+  aspect-ratio:  1;
+  border-radius: var(--radius-md);
+}
+
+/* Loading state */
+.btn--loading {
+  position:       relative;
+  pointer-events: none;
+  color:          transparent;
+}
+.btn--loading::after {
+  content:       '';
+  position:      absolute;
+  inset:         0;
+  margin:        auto;
+  width:         1em;
+  height:        1em;
+  border:        2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation:     btn-spin 0.6s linear infinite;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   UWorld-specific button: Answer choice
+   -------------------------------------------------------------------------- */
+.btn--answer {
+  display:          flex;
+  align-items:      flex-start;
+  gap:              var(--space-3);
+  width:            100%;
+  padding:          var(--space-4);
+  background-color: var(--color-bg-default);
+  border:           2px solid var(--color-border-default);
+  border-radius:    var(--radius-lg);
+  font-size:        var(--font-size-md);
+  font-weight:      var(--font-weight-regular);
+  color:            var(--color-text-primary);
+  text-align:       left;
+  line-height:      var(--line-height-relaxed);
+  cursor:           pointer;
+  transition:       border-color 150ms ease, background-color 150ms ease;
+  height:           auto;
+}
+.btn--answer:hover:not(:disabled) {
+  border-color:     var(--color-primary-400);
+  background-color: var(--color-primary-50);
+}
+.btn--answer.is-selected {
+  border-color:     var(--color-answer-selected);
+  background-color: var(--color-primary-50);
+}
+.btn--answer.is-correct {
+  border-color:     var(--color-answer-correct);
+  background-color: var(--color-success-50);
+}
+.btn--answer.is-incorrect {
+  border-color:     var(--color-answer-incorrect);
+  background-color: var(--color-danger-50);
+}
+.btn--answer.is-omitted {
+  border-color:     var(--color-answer-omitted);
+  background-color: var(--color-warning-50);
+}
